@@ -3,7 +3,7 @@ package tripleprice.flight.traveloka;
 import tripleprice.flight.service.FlightConnectorService;
 import tripleprice.flight.bean.FlightSearchItem;
 
-public class TravelokaConnectorService implements FlightConnectorService {
+public class TravelokaFlightService implements FlightConnectorService {
 
 	@Override
 	public FlightSearchItem flightSearchItem() {

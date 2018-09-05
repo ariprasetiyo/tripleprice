@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import tripleprice.aggregator.AggregatorService;
+import tripleprice.flight.bean.FlightSearchItem;
+
 /**
  *
  * @author ari-prasetiyo
@@ -24,6 +27,9 @@ public class LoginController {
             model.addObject("message", "Logged out from AG successfully.");
         }
         model.setViewName("login/login.html");
+        
+        AggregatorService aggregatorService = new AggregatorService();
+        FlightSearchItem sas = aggregatorService.getFlightSearch();
         return model;
     }
 }

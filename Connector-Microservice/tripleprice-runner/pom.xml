@@ -12,5 +12,13 @@
 	<artifactId>tripleprice-runner</artifactId>
 	<packaging>jar</packaging>
 	<description>trip lowest price</description>
+	
+	<dependencies>
+		<dependency>
+			<groupId>tripleprice</groupId>
+			<artifactId>tripleprice-aggregator</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 
 </project>
