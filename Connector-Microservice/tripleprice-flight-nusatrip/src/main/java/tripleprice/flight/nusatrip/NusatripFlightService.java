@@ -13,7 +13,7 @@ public class NusatripFlightService implements FlightConnectorService {
 
 	@Override
 	public FlightSearchItem flightSearchItem() {
-		NusatripConnector NusatripConnector = new NusatripConnector();
+		NusatripConnector nusatripConnector = new NusatripConnector();
 		return null;
 	}
 

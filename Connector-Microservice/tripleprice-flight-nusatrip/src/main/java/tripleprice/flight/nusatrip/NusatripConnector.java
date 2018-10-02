@@ -3,6 +3,7 @@ package tripleprice.flight.nusatrip;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.http.HttpEntity;
@@ -19,12 +20,19 @@ public class NusatripConnector {
 
 	public NusatripConnector() {
 		try {
-			Document doc = Jsoup
-					.connect(
-							"http://nusatrip.com/flights/search?departDate=20181024&lang=en&departure=DPS&adultNum=2&arrival=CGK")
-					.get();
-			//Pattern p = Pattern.compile("key=*.*(\',\\s+//feed_url)");
-			Pattern p = Pattern.compile("feed_url:*.*");
+
+			/**
+			 * Handle customize header
+			 * 
+			 * @link{https://github.com/jhy/jsoup/issues/541}
+			 */
+			System.setProperty("sun.net.http.allowRestrictedHeaders", "true");
+			Connection connectionStageOne = Jsoup.connect(
+					"http://www.nusatrip.com/flights/search?departDate=20181124&lang=en&departure=DPS&adultNum=2&arrival=CGK");
+			connectionStageOne.header("Host", "www.nusatrip.com");
+			Document doc = connectionStageOne.get();
+
+			Pattern p = Pattern.compile("key=*.*");
 			Matcher m = p.matcher(doc.select("script").html());
 			String resultKey = null;
 			while (m.find()) {
@@ -36,8 +44,8 @@ public class NusatripConnector {
 			String finalResultKey = restTemplate
 					.getForObject("http://nusatrip.com/mobile/flights/result?key=" + resultKey, String.class);
 
-			//System.out.println("finalResultKey : "+finalResultKey);
-			System.out.println("resultKey : "+resultKey);
+			// System.out.println("finalResultKey : "+finalResultKey);
+			System.out.println("resultKey : " + resultKey);
 
 			// http://www.nusatrip.com/checkout/booking
 
@@ -92,14 +100,14 @@ public class NusatripConnector {
 			String resultString = response.getBody();
 			HttpHeaders headers = response.getHeaders();
 
-			//System.out.println(resultString.toString());
-			//System.out.println(headers.toString());
+			// System.out.println(resultString.toString());
+			// System.out.println(headers.toString());
 
 		} catch (Exception x) {
 			x.printStackTrace();
 		}
 	}
-	
+
 	private FlightSearchItem getFlighSearchItem() {
 		FlightSearchItem flightSearchItem = new FlightSearchItem();
 		return flightSearchItem;
