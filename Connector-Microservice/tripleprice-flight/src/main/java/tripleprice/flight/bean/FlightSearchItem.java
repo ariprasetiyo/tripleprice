@@ -4,6 +4,7 @@ import java.util.List;
 
 public class FlightSearchItem {
 	String flightSearchItemId;
+	String flightSearchVendorId;
 	List<Segment> outboundSegments;
 	List<Segment> inboundSegments;
 
@@ -31,10 +32,19 @@ public class FlightSearchItem {
 		this.inboundSegments = inboundSegments;
 	}
 
+	public String getFlightSearchVendorId() {
+		return flightSearchVendorId;
+	}
+
+	public void setFlightSearchVendorId(String flightSearchVendorId) {
+		this.flightSearchVendorId = flightSearchVendorId;
+	}
+
 	@Override
 	public String toString() {
-		return "FlightSearchItem [flightSearchItemId=" + flightSearchItemId + ", outboundSegments=" + outboundSegments
-				+ ", inboundSegments=" + inboundSegments + "]";
+		return "FlightSearchItem [flightSearchItemId=" + flightSearchItemId + ", flightSearchVendorId="
+				+ flightSearchVendorId + ", outboundSegments=" + outboundSegments + ", inboundSegments="
+				+ inboundSegments + "]";
 	}
 
 }

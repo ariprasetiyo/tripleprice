@@ -3,24 +3,21 @@ package tripleprice.aggregator;
 import java.util.ArrayList;
 import java.util.List;
 
-import tripleprice.flight.bean.FlightSearchItem;
-import tripleprice.flight.nusatrip.NusatripFlightService;
-import tripleprice.flight.service.FlightConnectorService;
-import tripleprice.flight.traveloka.TravelokaFlightService;
+import org.springframework.stereotype.Service;
 
+import tripleprice.flight.bean.FlightSearchItem;
+import tripleprice.flight.service.FlightService;
+
+@Service
 public class AggregatorService {
 
-	List<FlightConnectorService> sas = new ArrayList<>();
+	List<FlightService> flightServiceList = new ArrayList<>();
 
-	public AggregatorService() {
-		FlightConnectorService nusatrip = new NusatripFlightService();
-		FlightConnectorService traveloka = new TravelokaFlightService();
-
-		sas.add(nusatrip);
-		sas.add(traveloka);
+	public AggregatorService(List<FlightService> flightServiceList) {
+		this.flightServiceList = flightServiceList;
 	}
 
 	public FlightSearchItem getFlightSearch() {
-		return sas.get(0).flightSearchItem();
+		return flightServiceList.get(0).flightSearchItem();
 	}
 }
