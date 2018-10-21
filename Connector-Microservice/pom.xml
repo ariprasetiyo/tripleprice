@@ -147,6 +147,8 @@
 		<module>tripleprice-flight-traveloka</module>
 		<module>tripleprice-flight</module>
 		<module>tripleprice-service</module>
+		<module>tripleprice-cache-redis</module>
+		<module>tripleprice-cache</module>
 		<module>tripleprice-util</module>
 		<module>tripleprice-docs</module>
 	</modules>

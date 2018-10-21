@@ -17,4 +17,5 @@ public class TestProperties {
 	public void setUrlFlightSearchFindKey(String urlFlightSearchFindKey) {
 		this.urlFlightSearchFindKey = urlFlightSearchFindKey;
 	}
+
 }

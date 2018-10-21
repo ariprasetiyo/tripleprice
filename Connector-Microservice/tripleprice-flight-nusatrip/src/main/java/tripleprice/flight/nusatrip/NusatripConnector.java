@@ -10,6 +10,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -21,6 +22,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import tripleprice.flight.service.FlightConnector;
+import tripleprice.util.properties.TripepriceProperties;
 
 @Service
 public class NusatripConnector implements FlightConnector {
@@ -44,8 +46,12 @@ public class NusatripConnector implements FlightConnector {
 
 	private final String urlSearchGetToken;
 	private final String urlSearchGetFlightListJson;
-
+	
+	/*@Autowired
+	TripepriceProperties tripepriceProperties;
+	*/
 	NusatripConnector(String urlSearchGetToken, String urlSearchGetFlightListJson) {
+		
 		this.urlSearchGetToken = urlSearchGetToken;
 		this.urlSearchGetFlightListJson = urlSearchGetFlightListJson;
 
@@ -54,7 +60,15 @@ public class NusatripConnector implements FlightConnector {
 				urlSearchGetFlightListJson);
 	}
 
+	
+	
+	/*cyclicDependencyResoled asasa = new TestProperties();;
+	*/
 	public String getSearch() {
+		
+	/*	asasa.callMethodSample();
+	*/	
+//		System.out.println("=============="+asasas.getUrlFlightSearchFindKey());
 		try {
 			String keyFlightSearch = getKeySearchFlight();
 			if (keyFlightSearch == null) {
