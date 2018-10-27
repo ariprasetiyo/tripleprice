@@ -15,7 +15,7 @@ public enum PieceType {
 	 * @param intValue
 	 * @return
 	 */
-	PieceType valueOf(int intValue) {
+	PieceType valueOf(short intValue) {
 		switch (intValue) {
 		case 1:
 			return GRAM;

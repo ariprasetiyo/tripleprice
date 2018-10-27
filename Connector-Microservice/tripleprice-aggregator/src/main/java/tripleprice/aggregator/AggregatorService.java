@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import tripleprice.flight.bean.FlightSearchItem;
+import tripleprice.flight.FlightItems;
 import tripleprice.flight.service.FlightService;
 
 @Service
@@ -17,7 +17,9 @@ public class AggregatorService {
 		this.flightServiceList = flightServiceList;
 	}
 
-	public FlightSearchItem getFlightSearch() {
-		return flightServiceList.get(0).flightSearchItem();
+	public FlightItems getFlightSearch() {
+		
+		flightServiceList.get(0).flightSearchItem(null);
+	return	flightServiceList.get(1).flightSearchItem(null);
 	}
 }

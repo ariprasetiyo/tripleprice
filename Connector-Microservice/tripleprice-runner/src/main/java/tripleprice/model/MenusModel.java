@@ -13,8 +13,8 @@ import javax.persistence.Table;
  *
  * @author ari-prasetiyo
  */
-@Entity
 @Table(name = "sys_menu")
+@Entity
 //@NamedNativeQueries({
 //		@NamedNativeQuery(name = "UserRolesModel.deleteByUserId", query = "delete from sys_user_roles where sys_user_id = :nUserId") })
 public class MenusModel extends ModelEntity {

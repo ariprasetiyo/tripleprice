@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import tripleprice.aggregator.AggregatorService;
 import tripleprice.beans.TestProperties;
-import tripleprice.flight.bean.FlightSearchItem;
+import tripleprice.flight.FlightItems;
 
 /**
  *
@@ -37,7 +37,7 @@ public class LoginController {
 
 		System.out.println("-----------------" + testProperties.getUrlFlightSearchFindKey());
 
-		FlightSearchItem sas = aggregatorService.getFlightSearch();
+		FlightItems sas = aggregatorService.getFlightSearch();
 		return model;
 	}
 }

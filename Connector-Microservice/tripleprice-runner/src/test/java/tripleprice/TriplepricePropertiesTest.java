@@ -4,31 +4,31 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import tripleprice.beans.TestProperties;
-
-//@RunWith(SpringRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-@EnableAutoConfiguration
-@Configuration
-@ContextConfiguration(locations = { "classpath:applicationContext.xml" })
-@RunWith (SpringRunner.class)
+@TestPropertySource(locations = "file:resources/application.properties")
+/*
+ * @ContextConfiguration( locations = { "classpath:applicationContext.xml" },
+ * classes={RedisCacheChannel.class, String.class, short.class})
+ */
+// @ImportResource({ "spring.config.name:resources/application" })
+// @ActiveProfiles("local")
 public class TriplepricePropertiesTest {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(TriplepricePropertiesTest.class);
 
-	@Autowired
-	TestProperties TripepriceProperties;
+	/*
+	 * @Autowired TestProperties TripepriceProperties;
+	 */
 
 	@Test
 	public void propertiesTest() {
-		LOGGER.debug("asasas");
-		//LOGGER.debug("Result test={}", TripepriceProperties.getUrlFlightSearchFindKey());
+		LOGGER.debug("\n\nlnlnlasasas");
+		// LOGGER.debug("Result test={}",
+		// TripepriceProperties.getUrlFlightSearchFindKey());
 	}
 }

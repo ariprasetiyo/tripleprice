@@ -14,7 +14,7 @@ public enum Gender {
 	 * @param intValue
 	 * @return
 	 */
-	Gender valueOf(int intValue) {
+	Gender valueOf(byte intValue) {
 		switch (intValue) {
 		case 0:
 			return MALE;

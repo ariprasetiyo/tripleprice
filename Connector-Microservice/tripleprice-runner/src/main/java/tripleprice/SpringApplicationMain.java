@@ -12,9 +12,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-/*@ComponentScan(basePackages = { "service", "tripleprice", "tripleprice.runner", "tripleprice.aggregator",
-		"tripleprice.flight.nusatrip" })*/
-// @SpringBootApplication/*
 @SpringBootApplication
 /**
  * Enable proxyTargetClass=true in @EnableTransactionManagement if there isn't
@@ -31,16 +28,17 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * 
  */
 @ImportResource({ "file:resources/applicationContext.xml" })
-// @Import({ NusatripConnectorConfiguration.class})
-// @EnableJpaRepositories(basePackages={"repository"})
+// @ImportResource("classpath:applicationContext.xml")
 @EnableAutoConfiguration
-// @EntityScan(basePackages={"model"})
 public class SpringApplicationMain {
 
 	static Logger log = LoggerFactory.getLogger(SpringApplicationMain.class);
 
 	public static void main(String[] args) {
 
+		SpringApplicationBuilder builder = new SpringApplicationBuilder(SpringApplicationMain.class);
+		builder.properties("spring.config.name:resources/application");
+		builder.build().run(args);
 		/*
 		 * If use this, by default configuration application.properties
 		 */
@@ -49,9 +47,20 @@ public class SpringApplicationMain {
 		 * SpringApplication.run(SpringApplicationMain.class, args);
 		 * SpringApplication.run(SpringApplicationMain.class, args);
 		 */
-		new SpringApplicationBuilder(SpringApplicationMain.class).properties("spring.config.name:resources/application")
-				.build().run(args);
+		/*
+		 * String[] profiles =
+		 * builder.context().getEnvironment().getActiveProfiles(); for (String
+		 * profile : profiles) { if (profile.equals("maven-start")) {
+		 * System.out.println("xxxxxxx\n\n\n\n");
+		 * builder.properties("spring.config.name:application"); } else {
+		 * System.out.println("yyyy\n\n\n\n");
+		 * builder.properties("spring.config.name:resources/application"); } }
+		 */
 
+		/*
+		 * new SpringApplicationBuilder(SpringApplicationMain.class).properties(
+		 * "spring.config.name:resources/application") .build().run(args);
+		 */
 		Authentication auth2 = SecurityContextHolder.getContext().getAuthentication();
 		if (auth2 != null) {
 

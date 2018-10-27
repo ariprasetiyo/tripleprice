@@ -1,7 +1,8 @@
 package tripleprice.flight.service;
 
-import tripleprice.flight.bean.FlightSearchItem;
+import tripleprice.flight.FlightItems;
+import tripleprice.flight.FlightParams;
 
 public interface FlightService {
-	FlightSearchItem flightSearchItem();
+	FlightItems flightSearchItem(final FlightParams flightParams);
 }

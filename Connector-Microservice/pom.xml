@@ -84,10 +84,65 @@
 			<version>3.2.1</version>
 		</dependency>
 
+		<!-- The winner faster deserialize and serialize json -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
 		</dependency>
+
+		<!-- Support dataBin -->
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<!-- https://www.mkyong.com/java/how-do-convert-java-object-to-from-json-format-gson-api/ -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
+		</dependency>
+
+		<!-- Support dataBin -->
+		<!-- cons : couln't be deserialized -->
+		<!-- https://johnzon.apache.org/ -->
+		<!-- comparation result : https://interviewbubble.com/performance-comparison-of-json-libraries-jackson-vs-gson-vs-fastjson-vs-json-simple-vs-jsonp/ -->
+		<dependency>
+			<groupId>org.apache.johnzon</groupId>
+			<artifactId>johnzon-core</artifactId>
+			<version>1.1.10</version>
+			<!-- <version>${johnzon.version}</version> -->
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-json_1.1_spec</artifactId>
+			<version>1.1</version>
+			<!-- <version>${jsonspecversion}</version> -->
+			<scope>provided</scope> <!-- or compile if your environment doesn't provide it -->
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.johnzon</groupId>
+			<artifactId>johnzon-mapper</artifactId>
+			<!-- <version>${johnzon.version}</version> -->
+			<version>1.1.10</version>
+		</dependency>
+
+		<!-- cons : not support property name -->
+		<!-- pros : faster rather than johnzon-jsonb, gson or jackson -->
+		<!-- Support data bin -->
+		<!-- tutorial : http://flexjson.sourceforge.net/ -->
+		<!-- comparation result : https://interviewbubble.com/performance-comparison-of-json-libraries-jackson-vs-gson-vs-fastjson-vs-json-simple-vs-jsonp/ -->
+		<!-- https://mvnrepository.com/artifact/net.sf.flexjson/flexjson -->
+		<!-- https://mvnrepository.com/artifact/net.sf.flexjson/flexjson -->
+		<dependency>
+			<groupId>net.sf.flexjson</groupId>
+			<artifactId>flexjson</artifactId>
+			<version>3.3</version>
+		</dependency>
+
+
+		<!-- not used org.json due to only support data stream -->
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<!-- <dependency> <groupId>org.json</groupId> <artifactId>json</artifactId> 
+			<version>20180813</version> </dependency> -->
 
 		<!-- scope provided because the processor is only needed for the compiler -->
 		<dependency>
@@ -135,8 +190,12 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/net.sf.trove4j/trove4j -->
-		<!-- <dependency> <groupId>net.sf.trove4j</groupId> <artifactId>trove4j</artifactId> 
-			<version>3.0.3</version> </dependency> -->
+		<dependency>
+			<groupId>net.sf.trove4j</groupId>
+			<artifactId>trove4j</artifactId>
+			<version>3.0.3</version>
+		</dependency>
+
 	</dependencies>
 
 	<modules>
@@ -147,7 +206,6 @@
 		<module>tripleprice-flight-traveloka</module>
 		<module>tripleprice-flight</module>
 		<module>tripleprice-service</module>
-		<module>tripleprice-cache-redis</module>
 		<module>tripleprice-cache</module>
 		<module>tripleprice-util</module>
 		<module>tripleprice-docs</module>

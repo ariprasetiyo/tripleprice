@@ -1,19 +1,33 @@
-package tripleprice.flight.bean;
+package tripleprice.flight;
 
 import java.util.List;
 
-public class FlightSearchItem {
-	String flightSearchItemId;
-	String flightSearchVendorId;
-	List<Segment> outboundSegments;
-	List<Segment> inboundSegments;
+/**
+ * 
+ * @author ari.prasetiyo
+ *
+ */
+public class FlightItems {
 
-	public String getFlightSearchItemId() {
+	private long flightSearchItemId;
+	private short flightSearchVendorId;
+	private List<Segment> outboundSegments;
+	private List<Segment> inboundSegments;
+
+	public long getFlightSearchItemId() {
 		return flightSearchItemId;
 	}
 
-	public void setFlightSearchItemId(String flightSearchItemId) {
+	public void setFlightSearchItemId(long flightSearchItemId) {
 		this.flightSearchItemId = flightSearchItemId;
+	}
+
+	public short getFlightSearchVendorId() {
+		return flightSearchVendorId;
+	}
+
+	public void setFlightSearchVendorId(short flightSearchVendorId) {
+		this.flightSearchVendorId = flightSearchVendorId;
 	}
 
 	public List<Segment> getOutboundSegments() {
@@ -32,17 +46,9 @@ public class FlightSearchItem {
 		this.inboundSegments = inboundSegments;
 	}
 
-	public String getFlightSearchVendorId() {
-		return flightSearchVendorId;
-	}
-
-	public void setFlightSearchVendorId(String flightSearchVendorId) {
-		this.flightSearchVendorId = flightSearchVendorId;
-	}
-
 	@Override
 	public String toString() {
-		return "FlightSearchItem [flightSearchItemId=" + flightSearchItemId + ", flightSearchVendorId="
+		return "FlightItemList [flightSearchItemId=" + flightSearchItemId + ", flightSearchVendorId="
 				+ flightSearchVendorId + ", outboundSegments=" + outboundSegments + ", inboundSegments="
 				+ inboundSegments + "]";
 	}

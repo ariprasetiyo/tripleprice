@@ -1,13 +1,18 @@
-package tripleprice.flight.bean;
+package tripleprice.flight;
 
 import tripleprice.flight.enumuration.SsrType;
 
+/**
+ * 
+ * @author ari.prasetiyo
+ *
+ */
 public class Ssr {
-	String ssrName;
-	SsrType ssrType;
-	int luggageWeight;
-	double price;
-	double discount;
+	private String ssrName;
+	private SsrType ssrType;
+	private short luggageWeight;
+	private double price;
+	private double discount;
 
 	public String getSsrName() {
 		return ssrName;
@@ -25,11 +30,11 @@ public class Ssr {
 		this.ssrType = ssrType;
 	}
 
-	public int getLuggageWeight() {
+	public short getLuggageWeight() {
 		return luggageWeight;
 	}
 
-	public void setLuggageWeight(int luggageWeight) {
+	public void setLuggageWeight(short luggageWeight) {
 		this.luggageWeight = luggageWeight;
 	}
 

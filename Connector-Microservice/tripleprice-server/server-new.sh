@@ -33,7 +33,7 @@ do_start(){
 }
 do_move(){
 	cd ${WORKING_DIR}
-	cp -R ../tripleprice-runner/src/main/resources .
+	cp -R ../tripleprice-runner/resources .
 	cp -R ../tripleprice-runner/src/main/webapp ${WORKING_DIR}/src/main/
 	cp ../tripleprice-runner/target/tripleprice-runner-*.jar .
 	return 0

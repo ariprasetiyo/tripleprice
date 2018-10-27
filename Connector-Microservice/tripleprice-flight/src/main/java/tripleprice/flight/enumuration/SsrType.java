@@ -14,7 +14,7 @@ public enum SsrType {
 	 * @param intValue
 	 * @return
 	 */
-	SsrType valueOf(int intValue) {
+	SsrType valueOf(byte intValue) {
 		switch (intValue) {
 		case 1:
 			return SPORTS;

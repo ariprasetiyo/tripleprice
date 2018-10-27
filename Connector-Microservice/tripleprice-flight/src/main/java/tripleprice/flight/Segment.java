@@ -1,4 +1,4 @@
-package tripleprice.flight.bean;
+package tripleprice.flight;
 
 import java.util.Date;
 import java.util.List;
@@ -8,21 +8,21 @@ import java.util.List;
  * @author ari-prasetiyo. common item
  */
 public class Segment {
-	int segmentId;
-	Date depatureDate;
-	Date arrivalDate;
-	int totalDuration;
-	double totalPrice;
-	double discount;
-	String promo;
-	List<FlightItem> flightItems;
-	List<Ssr> ssrs;
+	private byte segmentId;
+	private Date depatureDate;
+	private Date arrivalDate;
+	private short totalDuration;
+	private double totalPrice;
+	private double discount;
+	private String promo;
+	private List<FlightItem> flightItems;
+	private List<Ssr> ssrs;
 
-	public int getSegmentId() {
+	public byte getSegmentId() {
 		return segmentId;
 	}
 
-	public void setSegmentId(int segmentId) {
+	public void setSegmentId(byte segmentId) {
 		this.segmentId = segmentId;
 	}
 
@@ -42,11 +42,11 @@ public class Segment {
 		this.arrivalDate = arrivalDate;
 	}
 
-	public int getTotalDuration() {
+	public short getTotalDuration() {
 		return totalDuration;
 	}
 
-	public void setTotalDuration(int totalDuration) {
+	public void setTotalDuration(short totalDuration) {
 		this.totalDuration = totalDuration;
 	}
 

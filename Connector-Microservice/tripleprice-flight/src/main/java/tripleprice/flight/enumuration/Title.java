@@ -14,7 +14,7 @@ public enum Title {
 	 * @param intValue
 	 * @return
 	 */
-	Title valueOf(int intValue) {
+	Title valueOf(byte intValue) {
 		switch (intValue) {
 		case 1:
 			return Mr;

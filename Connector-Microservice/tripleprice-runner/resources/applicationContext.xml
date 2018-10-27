@@ -9,21 +9,31 @@
 		http://www.springframework.org/schema/tx 
       	http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
-	<bean id="util" class="tripleprice.util.Util" />
-
-	<bean id="exporter" class="org.springframework.jmx.export.MBeanExporter"
-		lazy-init="false">
-		<property name="beans">
-			<map>
-				<entry key="mytriple:type=services,name=util" value-ref="util" />
-			</map>
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>file:resources/application.properties</value>
 		</property>
 	</bean>
 
-	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
-		<property name="location"> <value>../app.properties</value> </property> </bean> -->
+	<bean id="nusatripKeySearchCache" class="tripleprice.cache.redis.RedisCacheChannel">
+		<constructor-arg type="java.lang.String" value="nusatrip:" /><!-- 
+			cache prefix -->
+		<constructor-arg type="short" value="60" />
+	</bean>
 
-	<bean id="nusatripConnector" class="tripleprice.flight.nusatrip.NusatripConnector">
+	<bean id="travelokaKeySearchCache" class="tripleprice.cache.redis.RedisCacheChannel">
+		<constructor-arg type="java.lang.String" value="nusatrip:" /><!-- 
+			cache prefix -->
+		<constructor-arg type="short" value="60" />
+	</bean>
+
+	<!-- <bean id="cacheManager" class="tripleprice.cache.redis.CacheManager"> 
+		<constructor-arg> <list> <ref bean="nusatripKeySearchCache" /> </list> </constructor-arg> 
+		</bean> -->
+
+	<bean id="nusatripConnector" class="tripleprice.flight.nusatrip.NusatripConnector"
+		init-method="start" destroy-method="close">
 		<constructor-arg type="java.lang.String"
 			value="${nusatrip.url.flight.search.get.token}" />
 		<constructor-arg type="java.lang.String"
@@ -33,6 +43,12 @@
 	<bean id="nusatripFlightService" class="tripleprice.flight.nusatrip.NusatripFlightService">
 		<constructor-arg type="java.lang.String"
 			value="${nusatrip.url.flight.search.findkey}" />
+	</bean>
+
+	<bean id="travelokaConnector" class="tripleprice.flight.traveloka.TravelokaConnector"
+		init-method="start" destroy-method="close">
+		<constructor-arg type="java.lang.String"
+			value="${traveloka.url.flight.search.oneway}" />
 	</bean>
 
 	<bean id="travelokaFlightService" class="tripleprice.flight.traveloka.TravelokaFlightService">
@@ -46,6 +62,20 @@
 			</list>
 		</constructor-arg>
 	</bean>
+
+	<bean id="util" class="tripleprice.util.Util" />
+
+	<bean id="exporter" class="org.springframework.jmx.export.MBeanExporter"
+		lazy-init="false">
+		<property name="beans">
+			<map>
+				<entry key="mytriple:type=services,name=util" value-ref="util" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
+		<property name="location"> <value>../app.properties</value> </property> </bean> -->
 
 	<!-- <bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> 
 		<property name="dataSource" ref="dataSource" /> </bean> <bean id="dataSource" 

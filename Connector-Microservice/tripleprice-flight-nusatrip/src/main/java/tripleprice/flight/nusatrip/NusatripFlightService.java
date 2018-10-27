@@ -1,9 +1,13 @@
 package tripleprice.flight.nusatrip;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tripleprice.flight.bean.FlightSearchItem;
+import tripleprice.flight.FlightItems;
+import tripleprice.flight.FlightParams;
 import tripleprice.flight.service.FlightService;
 
 /**
@@ -23,8 +27,18 @@ public class NusatripFlightService implements FlightService {
 	}
 
 	@Override
-	public FlightSearchItem flightSearchItem() {
-		nusatripConnector.getSearch();
+	public FlightItems flightSearchItem(final FlightParams flightParams) {
+		NusatripFlightParams nusatripFlightParams = new NusatripFlightParams();
+		
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.set(Calendar.DATE, 30);
+		
+		nusatripFlightParams.setDepatureDate(cal.getTime());
+		nusatripFlightParams.setDepatureAirportCode("CGK");
+		nusatripFlightParams.setArrivalAirportCode("DPS");
+		nusatripFlightParams.setAdultsNum((byte)1);
+		nusatripConnector.getSearch(nusatripFlightParams);
 		return null;
 	}
 

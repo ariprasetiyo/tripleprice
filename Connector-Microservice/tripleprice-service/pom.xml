@@ -19,5 +19,11 @@
 			<artifactId>tripleprice-util</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>tripleprice</groupId>
+			<artifactId>tripleprice-cache</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
 	</dependencies>
 </project>

@@ -1,5 +1,15 @@
 package tripleprice.flight.service;
 
+/**
+ * 
+ * @author ari.prasetiyo
+ *
+ */
 public interface FlightConnector {
-	public String getSearch();
+	
+	public void start();
+	
+	public void close();
+	
+	public String getSearch(Object flightParams);
 }

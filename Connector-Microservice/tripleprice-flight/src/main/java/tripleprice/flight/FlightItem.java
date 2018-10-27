@@ -1,22 +1,27 @@
-package tripleprice.flight.bean;
+package tripleprice.flight;
 
 import java.util.Date;
 
+/**
+ * 
+ * @author ari.prasetiyo
+ *
+ */
 public class FlightItem {
-	String airlineCode;
-	String airlineId;
-	String airlineName;
-	String departureCity;
-	String arrivalCity;
-	String depatureCode;
-	String arrivalCode;
-	Date depatureDate;
-	Date arrivalDate;
-	int duration;
-	int transit;
-	boolean hiddenStop;
-	double price;
-	String airlineLogoUrl;
+	private String airlineCode;
+	private String airlineId;
+	private String airlineName;
+	private String departureCity;
+	private String arrivalCity;
+	private String depatureCode;
+	private String arrivalCode;
+	private Date depatureDate;
+	private Date arrivalDate;
+	private short duration;
+	private byte transit;
+	private boolean hiddenStop;
+	private double price;
+	private String airlineLogoUrl;
 
 	public String getAirlineCode() {
 		return airlineCode;
@@ -90,19 +95,19 @@ public class FlightItem {
 		this.arrivalDate = arrivalDate;
 	}
 
-	public int getDuration() {
+	public short getDuration() {
 		return duration;
 	}
 
-	public void setDuration(int duration) {
+	public void setDuration(short duration) {
 		this.duration = duration;
 	}
 
-	public int getTransit() {
+	public byte getTransit() {
 		return transit;
 	}
 
-	public void setTransit(int transit) {
+	public void setTransit(byte transit) {
 		this.transit = transit;
 	}
 
