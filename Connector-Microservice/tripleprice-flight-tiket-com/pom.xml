@@ -9,25 +9,13 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>tripleprice-aggregator</artifactId>
+	<artifactId>tripleprice-flight-tiket-com</artifactId>
 	<packaging>jar</packaging>
 	<description>trip lowest price</description>
-
-
 	<dependencies>
 		<dependency>
 			<groupId>tripleprice</groupId>
-			<artifactId>tripleprice-flight-nusatrip</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>tripleprice</groupId>
-			<artifactId>tripleprice-flight-traveloka</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>tripleprice</groupId>
-			<artifactId>tripleprice-flight-tiket-com</artifactId>
+			<artifactId>tripleprice-flight</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

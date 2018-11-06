@@ -21,6 +21,9 @@ import tripleprice.flight.traveloka.json.request.NumberSeats;
 import tripleprice.flight.traveloka.json.request.SortFilter;
 import tripleprice.flight.traveloka.json.request.TravelokaFlightParams;
 
+/**
+ * @author ari.prasetiyo
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @TestPropertySource(locations = "file:resources/application.properties")

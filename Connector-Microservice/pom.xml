@@ -204,6 +204,7 @@
 		<!-- <module>tripleprice-aggregator-thrift</module> -->
 		<module>tripleprice-flight-nusatrip</module>
 		<module>tripleprice-flight-traveloka</module>
+		<module>tripleprice-flight-tiket-com</module>
 		<module>tripleprice-flight</module>
 		<module>tripleprice-service</module>
 		<module>tripleprice-cache</module>

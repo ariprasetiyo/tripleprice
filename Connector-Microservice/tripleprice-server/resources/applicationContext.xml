@@ -32,6 +32,8 @@
 		<constructor-arg> <list> <ref bean="nusatripKeySearchCache" /> </list> </constructor-arg> 
 		</bean> -->
 
+	<!-- Nusatrip -->
+
 	<bean id="nusatripConnector" class="tripleprice.flight.nusatrip.NusatripConnector"
 		init-method="start" destroy-method="close">
 		<constructor-arg type="java.lang.String"
@@ -45,6 +47,8 @@
 			value="${nusatrip.url.flight.search.findkey}" />
 	</bean>
 
+	<!-- traveloka -->
+
 	<bean id="travelokaConnector" class="tripleprice.flight.traveloka.TravelokaConnector"
 		init-method="start" destroy-method="close">
 		<constructor-arg type="java.lang.String"
@@ -54,11 +58,24 @@
 	<bean id="travelokaFlightService" class="tripleprice.flight.traveloka.TravelokaFlightService">
 	</bean>
 
+	<!-- Tiket.com -->
+	<bean id="tiketComConnector" class="tripleprice.flight.tiket.com.TiketComConnector"
+		init-method="start" destroy-method="close">
+		<constructor-arg type="java.lang.String"
+			value="${tripleprice.flight.tiket.com.search.key}" />
+		<constructor-arg type="java.lang.String"
+			value="${tripleprice.flight.tiket.com.search.flight.search.streaming}" />
+	</bean>
+
+	<bean id="tiketComFlightService" class="tripleprice.flight.tiket.com.TiketComFlightService">
+	</bean>
+
 	<bean id="aggregatorService" class="tripleprice.aggregator.AggregatorService">
 		<constructor-arg>
 			<list>
 				<ref bean="nusatripFlightService" />
 				<ref bean="travelokaFlightService" />
+				<ref bean="tiketComFlightService" />
 			</list>
 		</constructor-arg>
 	</bean>

@@ -85,16 +85,16 @@ public class TravelokaConnector implements FlightConnector {
 		flightSearchHeader.add(USER_AGENT, USER_AGENT_HEADER_VALUE);
 		flightSearchHeader.add(HOST, TRAVELOKA);
 		flightSearchHeader.add(ACCECPT, MediaType.APPLICATION_JSON_VALUE);
-		//flightSearchHeader.add(ACCEPT_ENCODING, ACCEPT_ENCODING_GZIP);
+		flightSearchHeader.add(ACCEPT_ENCODING, ACCEPT_ENCODING_GZIP);
 		flightSearchHeader.add(CONNECTION, KEEP_ALIVE);
 		flightSearchHeader.add(COOKIE, COOKIE_VALUE);
 		flightSearchHeader.add(ACCEPT_LANGUANGE, ACCEPT_LANGUANGE_VALUE);
 
-		LOGGER.debug("NusatripConnector connector start");
+		LOGGER.debug("TravelokaConnector connector start");
 	}
 
 	public void close() {
-		LOGGER.debug("NusatripConnector connector closed");
+		LOGGER.debug("TravelokaConnector connector closed");
 	}
 
 	@Override

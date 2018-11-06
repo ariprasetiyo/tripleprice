@@ -20,6 +20,7 @@ public class AggregatorService {
 	public FlightItems getFlightSearch() {
 		
 		flightServiceList.get(0).flightSearchItem(null);
-	return	flightServiceList.get(1).flightSearchItem(null);
+		flightServiceList.get(1).flightSearchItem(null);
+		return flightServiceList.get(2).flightSearchItem(null);
 	}
 }
