@@ -16,6 +16,23 @@
 		</property>
 	</bean>
 
+	<bean id="bossExecutorService" class="java.util.concurrent.ThreadPoolExecutor"
+		scope="singleton" lazy-init="false" destroy-method="shutdown">
+		<constructor-arg type="int" value="0" />
+		<constructor-arg type="int" value="2048" />
+		<constructor-arg type="long" value="60" />
+		<constructor-arg type="java.util.concurrent.TimeUnit"
+			value="SECONDS" />
+		<constructor-arg type="java.util.concurrent.BlockingQueue">
+			<bean class="java.util.concurrent.SynchronousQueue" />
+		</constructor-arg>
+		<constructor-arg type="java.util.concurrent.ThreadFactory">
+			<bean class="io.netty.util.concurrent.DefaultThreadFactory">
+				<constructor-arg type="java.lang.String" value="ns-nio-boss" />
+			</bean>
+		</constructor-arg>
+	</bean>
+
 	<bean id="nusatripKeySearchCache" class="tripleprice.cache.redis.RedisCacheChannel">
 		<constructor-arg type="java.lang.String" value="nusatrip:" /><!-- 
 			cache prefix -->
@@ -71,6 +88,7 @@
 	</bean>
 
 	<bean id="aggregatorService" class="tripleprice.aggregator.AggregatorService">
+		<constructor-arg ref="bossExecutorService" />
 		<constructor-arg>
 			<list>
 				<ref bean="nusatripFlightService" />

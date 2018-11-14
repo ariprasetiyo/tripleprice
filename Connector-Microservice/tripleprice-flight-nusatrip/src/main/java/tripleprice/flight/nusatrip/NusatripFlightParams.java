@@ -2,17 +2,23 @@ package tripleprice.flight.nusatrip;
 
 import java.util.Date;
 
-import tripleprice.flight.FlightParams;
 import tripleprice.flight.enumuration.FlightClassType;
 
 /**
- * 
  * @author ari.prasetiyo
- *
  */
-public class NusatripFlightParams extends FlightParams {
-	private String depatureAirportCode;
+public class NusatripFlightParams {
+	private Date depatureDate;
+	private Date returnDate;
+	private byte childrenNum;
+	private byte adultsNum;
+	private byte infantsNum;
+	private boolean isOneWay;
+	private short depatureAirportId;
+	private String departureAirportCode;
 	private String arrivalAirportCode;
+	private short arrivalAirportId;
+	private FlightClassType flightClassType;
 
 	public Date getDepatureDate() {
 		return depatureDate;
@@ -86,12 +92,12 @@ public class NusatripFlightParams extends FlightParams {
 		this.flightClassType = flightClassType;
 	}
 
-	public String getDepatureAirportCode() {
-		return depatureAirportCode;
+	public String getDepartureAirportCode() {
+		return departureAirportCode;
 	}
 
-	public void setDepatureAirportCode(String depatureAirportCode) {
-		this.depatureAirportCode = depatureAirportCode;
+	public void setDepartureAirportCode(String departureAirportCode) {
+		this.departureAirportCode = departureAirportCode;
 	}
 
 	public String getArrivalAirportCode() {
@@ -106,9 +112,9 @@ public class NusatripFlightParams extends FlightParams {
 	public String toString() {
 		return "NusatripFlightParams [depatureDate=" + depatureDate + ", returnDate=" + returnDate + ", childrenNum="
 				+ childrenNum + ", adultsNum=" + adultsNum + ", infantsNum=" + infantsNum + ", isOneWay=" + isOneWay
-				+ ", depatureAirportId=" + depatureAirportId + ", arrivalAirportId=" + arrivalAirportId
-				+ ", flightClassType=" + flightClassType + ", depatureAirportCode=" + depatureAirportCode
-				+ ", arrivalAirportCode=" + arrivalAirportCode + "]";
+				+ ", depatureAirportId=" + depatureAirportId + ", departureAirportCode=" + departureAirportCode
+				+ ", arrivalAirportCode=" + arrivalAirportCode + ", arrivalAirportId=" + arrivalAirportId
+				+ ", flightClassType=" + flightClassType + "]";
 	}
 
 }

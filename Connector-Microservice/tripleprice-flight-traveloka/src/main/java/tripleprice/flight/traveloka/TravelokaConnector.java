@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
 import tripleprice.flight.service.FlightConnector;
-import tripleprice.flight.traveloka.json.request.TravelokaFlightParams;
+import tripleprice.flight.traveloka.api.request.TravelokaFlightParams;
 
 /**
 * @author ari.prasetiyo

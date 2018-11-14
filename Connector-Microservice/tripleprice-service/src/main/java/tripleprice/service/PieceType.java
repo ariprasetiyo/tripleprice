@@ -15,7 +15,7 @@ public enum PieceType {
 	 * @param intValue
 	 * @return
 	 */
-	PieceType valueOf(int intValue) {
+	public static PieceType valueOf(int intValue) {
 		switch (intValue) {
 		case 1:
 			return GRAM;
@@ -34,6 +34,31 @@ public enum PieceType {
 		case 201:
 			return ROOM;
 		case 300:
+			return PERSON;
+		default:
+			return null;
+		}
+	}
+	
+	public static PieceType valueOfString(final String stringValue) {
+		switch (stringValue.toUpperCase()) {
+		case "GR":
+			return GRAM;
+		case "KG":
+			return KG;
+		case "TON":
+			return TON;
+		case "CM":
+			return CM;
+		case "M":
+			return M;
+		case "KM":
+			return KM;
+		case "BED":
+			return BED;
+		case "ROOM":
+			return ROOM;
+		case "PERSON":
 			return PERSON;
 		default:
 			return null;

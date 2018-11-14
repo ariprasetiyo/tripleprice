@@ -97,10 +97,6 @@ public class NusatripConnector implements FlightConnector {
 		LOGGER.debug("NusatripConnector connector closed");
 	}
 	
-	private void headerSearchFlight(){
-		
-	}
-
 	public String getSearch(final Object flightParams) {
 
 		/**
@@ -151,7 +147,7 @@ public class NusatripConnector implements FlightConnector {
 		urlSearchGetTokenFinal.append("&lang=");
 		urlSearchGetTokenFinal.append("en");
 		urlSearchGetTokenFinal.append("&departure=");
-		urlSearchGetTokenFinal.append(nusatripFlightParams.getDepatureAirportCode());
+		urlSearchGetTokenFinal.append(nusatripFlightParams.getDepartureAirportCode());
 		urlSearchGetTokenFinal.append("&adultNum=");
 		urlSearchGetTokenFinal.append(nusatripFlightParams.getAdultsNum());
 		urlSearchGetTokenFinal.append("&arrival=");

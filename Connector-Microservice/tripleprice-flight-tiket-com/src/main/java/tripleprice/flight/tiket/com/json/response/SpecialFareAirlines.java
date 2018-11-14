@@ -10,18 +10,18 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
  */
 @JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, isGetterVisibility = NONE, setterVisibility = NONE)
 public class SpecialFareAirlines {
-	String code;
-	String name;
-	String displayName;
-	String shortName;
-	String url;
-	String urlIcon;
+	private String code;
+	private String name;
+	private String displayName;
+	private String shortName;
+	private String url;
+	private String urlIcon;
 
 	public String getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(final String code) {
 		this.code = code;
 	}
 
@@ -29,7 +29,7 @@ public class SpecialFareAirlines {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -37,7 +37,7 @@ public class SpecialFareAirlines {
 		return displayName;
 	}
 
-	public void setDisplayName(String displayName) {
+	public void setDisplayName(final String displayName) {
 		this.displayName = displayName;
 	}
 
@@ -45,7 +45,7 @@ public class SpecialFareAirlines {
 		return shortName;
 	}
 
-	public void setShortName(String shortName) {
+	public void setShortName(final String shortName) {
 		this.shortName = shortName;
 	}
 
@@ -53,7 +53,7 @@ public class SpecialFareAirlines {
 		return url;
 	}
 
-	public void setUrl(String url) {
+	public void setUrl(final String url) {
 		this.url = url;
 	}
 
@@ -61,7 +61,7 @@ public class SpecialFareAirlines {
 		return urlIcon;
 	}
 
-	public void setUrlIcon(String urlIcon) {
+	public void setUrlIcon(final String urlIcon) {
 		this.urlIcon = urlIcon;
 	}
 

@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import tripleprice.aggregator.AggregatorService;
 import tripleprice.beans.TestProperties;
-import tripleprice.flight.FlightItems;
+import tripleprice.flight.search.FlightItems;
 
 /**
  *
@@ -24,9 +24,9 @@ public class LoginController {
 	AggregatorService aggregatorService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout) {
-		ModelAndView model = new ModelAndView();
+	public ModelAndView login(@RequestParam(value = "error", required = false) final String error,
+			@RequestParam(value = "logout", required = false) final String logout) {
+		final ModelAndView model = new ModelAndView();
 		if (error != null) {
 			model.addObject("error", "Invalid Credentials provided.");
 		}
@@ -37,7 +37,7 @@ public class LoginController {
 
 		System.out.println("-----------------" + testProperties.getUrlFlightSearchFindKey());
 
-		FlightItems sas = aggregatorService.getFlightSearch();
+		final FlightItems sas = aggregatorService.getFlightSearch();
 		return model;
 	}
 }

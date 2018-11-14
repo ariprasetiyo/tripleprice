@@ -12,16 +12,16 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
  */
 @JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, isGetterVisibility = NONE, setterVisibility = NONE)
 public class ItemsKeySearchDataResponse {
-	boolean searchCompleted;
-	String[] requestItems;
-	String searchList;
-	List<SpecialFareAirlines> specialFareAirlines;
+	private boolean searchCompleted;
+	private String[] requestItems;
+	private SearchList searchList;
+	private List<SpecialFareAirlines> specialFareAirlines;
 
 	public boolean isSearchCompleted() {
 		return searchCompleted;
 	}
 
-	public void setSearchCompleted(boolean searchCompleted) {
+	public void setSearchCompleted(final boolean searchCompleted) {
 		this.searchCompleted = searchCompleted;
 	}
 
@@ -29,15 +29,15 @@ public class ItemsKeySearchDataResponse {
 		return requestItems;
 	}
 
-	public void setRequestItems(String[] requestItems) {
+	public void setRequestItems(final String[] requestItems) {
 		this.requestItems = requestItems;
 	}
-
-	public String getSearchList() {
+	
+	public SearchList getSearchList() {
 		return searchList;
 	}
 
-	public void setSearchList(String searchList) {
+	public void setSearchList(final SearchList searchList) {
 		this.searchList = searchList;
 	}
 
@@ -45,7 +45,7 @@ public class ItemsKeySearchDataResponse {
 		return specialFareAirlines;
 	}
 
-	public void setSpecialFareAirlines(List<SpecialFareAirlines> specialFareAirlines) {
+	public void setSpecialFareAirlines(final List<SpecialFareAirlines> specialFareAirlines) {
 		this.specialFareAirlines = specialFareAirlines;
 	}
 

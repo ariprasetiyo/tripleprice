@@ -10,17 +10,17 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
  */
 @JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, isGetterVisibility = NONE, setterVisibility = NONE)
 public class ItemsKeySearchResponse {
-	String code;
-	String message;
-	String errors;
-	ItemsKeySearchDataResponse data;
-	long serverTime;
+	private String code;
+	private String message;
+	private String errors;
+	private ItemsKeySearchDataResponse data;
+	private long serverTime;
 
 	public String getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(final String code) {
 		this.code = code;
 	}
 
@@ -28,7 +28,7 @@ public class ItemsKeySearchResponse {
 		return message;
 	}
 
-	public void setMessage(String message) {
+	public void setMessage(final String message) {
 		this.message = message;
 	}
 
@@ -36,7 +36,7 @@ public class ItemsKeySearchResponse {
 		return errors;
 	}
 
-	public void setErrors(String errors) {
+	public void setErrors(final String errors) {
 		this.errors = errors;
 	}
 
@@ -44,7 +44,7 @@ public class ItemsKeySearchResponse {
 		return data;
 	}
 
-	public void setData(ItemsKeySearchDataResponse data) {
+	public void setData(final ItemsKeySearchDataResponse data) {
 		this.data = data;
 	}
 
@@ -52,7 +52,7 @@ public class ItemsKeySearchResponse {
 		return serverTime;
 	}
 
-	public void setServerTime(long serverTime) {
+	public void setServerTime(final long serverTime) {
 		this.serverTime = serverTime;
 	}
 

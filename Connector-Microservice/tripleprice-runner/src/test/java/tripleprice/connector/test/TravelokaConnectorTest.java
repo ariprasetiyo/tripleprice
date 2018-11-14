@@ -15,11 +15,11 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 
 import tripleprice.flight.enumuration.FlightClassType;
 import tripleprice.flight.traveloka.TravelokaConnector;
-import tripleprice.flight.traveloka.json.request.DataSearch;
-import tripleprice.flight.traveloka.json.request.FlightDate;
-import tripleprice.flight.traveloka.json.request.NumberSeats;
-import tripleprice.flight.traveloka.json.request.SortFilter;
-import tripleprice.flight.traveloka.json.request.TravelokaFlightParams;
+import tripleprice.flight.traveloka.api.request.DataSearch;
+import tripleprice.flight.traveloka.api.request.FlightDate;
+import tripleprice.flight.traveloka.api.request.NumberSeats;
+import tripleprice.flight.traveloka.api.request.SortFilter;
+import tripleprice.flight.traveloka.api.request.TravelokaFlightParams;
 
 /**
  * @author ari.prasetiyo

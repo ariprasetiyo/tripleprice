@@ -39,8 +39,7 @@
 					<!-- <jvmArguments>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005 
 						</jvmArguments> -->
 					<!-- <argLine>-Dws.properties=file:${home}/application.properties</argLine> -->
-					<!-- <argLine>-Dspring.config.location=file:${home}/application.properties</argLine>
-					 --><!-- <jvmArguments>-Dapplication.context=file:/media/ari-prasetiyo/ae9fa562-7875-470a-a44a-18829c16dc0f/PROJECT/GITHUB/tripleprice/Connector-Microservice/tripleprice-runner/applicationContext.xml</jvmArguments> 
+					<!-- <argLine>-Dspring.config.location=file:${home}/application.properties</argLine> --><!-- <jvmArguments>-Dapplication.context=file:/media/ari-prasetiyo/ae9fa562-7875-470a-a44a-18829c16dc0f/PROJECT/GITHUB/tripleprice/Connector-Microservice/tripleprice-runner/applicationContext.xml</jvmArguments> 
 						<jvmArguments>-Dws.properties=file:/media/ari-prasetiyo/ae9fa562-7875-470a-a44a-18829c16dc0f/PROJECT/GITHUB/tripleprice/Connector-Microservice/tripleprice-runner/resources/application.properties</jvmArguments> -->
 				</configuration>
 			</plugin>
