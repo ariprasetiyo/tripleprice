@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import tripleprice.service.master.data.model.ModelEntity;
+
 /**
  *
  * @author ari-prasetiyo

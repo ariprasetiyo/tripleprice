@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
+import tripleprice.service.master.data.model.ModelEntity;
+
 @Entity
 @Table(name = "sys_user")
 public class UserModel extends ModelEntity {

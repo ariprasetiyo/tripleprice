@@ -103,7 +103,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
 			logger.debug("{}", requestData.toString());
 		}
 		
-		if (requestData == null || requestData.getId() == null) {
+		if (requestData == null || requestData.getId() == 0) {
 			return null;
 		}
 		List<AuthorizationModel> sysAuthorizationList = getDataMenu(requestData);
@@ -181,7 +181,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
 		AuthorizationModel authorizationModel = authorizationMapper.asAuthorizationModel(authorizationDto);
 		authorizationModel = authorizationDao.save(authorizationModel);
 
-		if (authorizationModel == null || authorizationModel.getId() == null) {
+		if (authorizationModel == null || authorizationModel.getId() == 0) {
 			authorizationDto.setStatusType(StatusType.SAVE_ERROR);
 			authorizationDto.setMessage(StatusType.SAVE_AUTHORIZATION_ERROR.stringValue);
 			return authorizationDto;

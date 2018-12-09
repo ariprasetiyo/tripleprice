@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import tripleprice.service.master.data.model.ModelEntity;
+
 /**
  *
  * @author ari-prasetiyo

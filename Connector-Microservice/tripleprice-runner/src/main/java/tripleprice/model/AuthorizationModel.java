@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import tripleprice.dto.ScreenMenuDto;
+import tripleprice.service.master.data.model.ModelEntity;
 
 /**
  *

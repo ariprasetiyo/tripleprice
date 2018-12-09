@@ -25,7 +25,7 @@ public class Dto implements Serializable {
 
 	private static final long serialVersionUID = 1690600905679083387L;
 
-	protected Long id;
+	protected long id;
 
 	@JsonFormat(pattern = "dd-MM-yyyy hh:mm:ss")
 	private Date createdTime;
@@ -40,9 +40,9 @@ public class Dto implements Serializable {
 	@NotNull
 	private boolean disabled;
 
-	private String createdBy;
+	private long createdBy;
 
-	private String modifiedBy;
+	private long modifiedBy;
 
 	@JsonIgnore
 	private StatusType statusType;
@@ -50,12 +50,28 @@ public class Dto implements Serializable {
 	@JsonIgnore
 	private String message;
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
+	}
+
+	public long getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(long createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public long getModifiedBy() {
+		return modifiedBy;
+	}
+
+	public void setModifiedBy(long modifiedBy) {
+		this.modifiedBy = modifiedBy;
 	}
 
 	public Date getCreatedTime() {
@@ -90,21 +106,6 @@ public class Dto implements Serializable {
 		this.disabled = disabled;
 	}
 
-	public String getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public String getModifiedBy() {
-		return modifiedBy;
-	}
-
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
-	}
 
 	public StatusType getStatusType() {
 		return statusType;

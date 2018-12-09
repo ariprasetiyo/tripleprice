@@ -165,7 +165,7 @@ public class MenuServiceImpl implements MenuService {
 		MenuDto menuDto = new MenuDto();
 		MenusModel sysMenus = menusDao.save(menuModel);
 
-		if (sysMenus.getId() == null) {
+		if (sysMenus.getId() == 0) {
 			menuDto.setStatusType(StatusType.SAVE_ERROR);
 			menuDto.setMessage(StatusType.SAVE_ERROR.stringValue);
 			return menuDto;

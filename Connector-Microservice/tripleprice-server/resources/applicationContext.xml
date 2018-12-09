@@ -50,7 +50,6 @@
 		</bean> -->
 
 	<!-- Nusatrip -->
-
 	<bean id="nusatripConnector" class="tripleprice.flight.nusatrip.NusatripConnector"
 		init-method="start" destroy-method="close">
 		<constructor-arg type="java.lang.String"
@@ -65,7 +64,6 @@
 	</bean>
 
 	<!-- traveloka -->
-
 	<bean id="travelokaConnector" class="tripleprice.flight.traveloka.TravelokaConnector"
 		init-method="start" destroy-method="close">
 		<constructor-arg type="java.lang.String"

@@ -64,7 +64,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 		rolesModel = userGroupDao.save(rolesModel);
 		responseData.setData(rolesModel);
 
-		if (rolesModel.getId() == null) {
+		if (rolesModel.getId() == 0) {
 			responseData.setStatusType(StatusType.SAVE_ERROR);
 			responseData.setMessage(StatusType.NULL_POINTER_ERROR.stringValue);
 		} else {
@@ -79,7 +79,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 		logger.debug("Edit user group {}", rolesDto.toString());
 
 		ResponseData responseData = new ResponseData();
-		if (rolesDto.getId() == null || rolesDto.getId() <= 0) {
+		if (rolesDto.getId() <= 0 ) {
 			responseData.setStatusType(StatusType.UPDATE_ERROR);
 			responseData.setMessage(StatusType.NULL_VALUE.stringValue);
 			return responseData;
@@ -92,7 +92,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 		rolesModel = userGroupDao.save(rolesModel);
 		responseData.setData(rolesModel);
 
-		if (rolesModel.getId() == null) {
+		if (rolesModel.getId() == 0) {
 			responseData.setStatusType(StatusType.UPDATE_ERROR);
 			responseData.setMessage(StatusType.NULL_POINTER_ERROR.stringValue);
 		} else {
