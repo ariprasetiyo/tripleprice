@@ -9,11 +9,12 @@ import java.util.Date;
  */
 public class DateUtil {
 	private static DateUtil instance;
-	private static SimpleDateFormat DDMMYYY = new SimpleDateFormat("dd-MM-yyyy");
-	private static SimpleDateFormat HHMMSS_DDMMYYY = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
-	private static SimpleDateFormat DD = new SimpleDateFormat("dd");
-	private static SimpleDateFormat MM = new SimpleDateFormat("MM");
-	private static SimpleDateFormat YYYY = new SimpleDateFormat("yyyy");
+	private static final SimpleDateFormat DDMMYYY = new SimpleDateFormat("dd-MM-yyyy");
+	private static final SimpleDateFormat HHMMSS_DDMMYYY = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+	private static final SimpleDateFormat DD = new SimpleDateFormat("dd");
+	private static final SimpleDateFormat MM = new SimpleDateFormat("MM");
+	private static final SimpleDateFormat YYYY = new SimpleDateFormat("yyyy");
+	private static final SimpleDateFormat YYYYMMDD = new SimpleDateFormat("yyyy-MM-dd");
 
 	private DateUtil() {
 		super();
@@ -65,6 +66,10 @@ public class DateUtil {
 
 	public final String getDateYYYY(final Date date) {
 		return YYYY.format(date);
+	}
+
+	public final String getDateYYYYMMDD(final Date date) {
+		return YYYYMMDD.format(date);
 	}
 
 }

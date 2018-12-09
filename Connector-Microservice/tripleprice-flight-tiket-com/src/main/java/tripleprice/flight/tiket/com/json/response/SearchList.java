@@ -12,11 +12,51 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 public class SearchList {
 	private DepartureFlight[] departureFlights;
 
+	/**
+	 * TODO not yet support at tiket.com
+	 */
+	private Object[] returnFlights;
+	private Object[] srtReturnFlights;
+	private Object[] roundTrips;
+	private Object[] rtsRoundTrips;
+
 	public DepartureFlight[] getDepartureFlights() {
 		return departureFlights;
 	}
 
 	public void setDepartureFlights(final DepartureFlight[] departureFlights) {
 		this.departureFlights = departureFlights;
+	}
+
+	public Object getReturnFlights() {
+		return returnFlights;
+	}
+
+	public void setReturnFlights(final Object[] returnFlights) {
+		this.returnFlights = returnFlights;
+	}
+
+	public Object getSrtReturnFlights() {
+		return srtReturnFlights;
+	}
+
+	public void setSrtReturnFlights(final Object[] srtReturnFlights) {
+		this.srtReturnFlights = srtReturnFlights;
+	}
+
+	public Object getRoundTrips() {
+		return roundTrips;
+	}
+
+	public void setRoundTrips(final Object[] roundTrips) {
+		this.roundTrips = roundTrips;
+	}
+
+	public Object getRtsRoundTrips() {
+		return rtsRoundTrips;
+	}
+
+	public void setRtsRoundTrips(final Object[] rtsRoundTrips) {
+		this.rtsRoundTrips = rtsRoundTrips;
 	}
 }

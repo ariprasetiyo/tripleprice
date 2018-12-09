@@ -1,0 +1,41 @@
+"facilities":{
+   "meal":{
+      "icon":"https://static.tiket.photos/image/upload/v1534329719/flight-icon/2018/08/15/31115082018786e7f3bb6c616d3490c3b348434d616.png",
+      "value":true
+   },
+   "wifi":{
+      "icon":"https://static.tiket.photos/image/upload/v1534329768/flight-icon/2018/08/15/989150820181a400bca3b31f0f77689da985cdc569c.png",
+      "value":false
+   },
+   "usb":{
+      "icon":"https://static.tiket.photos/image/upload/v1534329802/flight-icon/2018/08/15/130150820186a0575afc59be41a20380a0d0d6f0c67.png",
+      "value":false
+   },
+   "entertainment":{
+      "icon":"https://static.tiket.photos/image/upload/v1534329836/flight-icon/2018/08/15/66015082018102f472b4b3e515cb1fb8ebe76299285.png",
+      "value":false
+   }
+}
+
+
+"connectings":[
+   {
+      "arrivalTime":"07:15",
+      "departureTime":"07:50",
+      "timezone":7.0,
+      "airportName":"Adisumarmo",
+      "airportCode":"SOC",
+      "cityCode":"SOCC",
+      "cityName":"Surakarta (Solo)",
+      "departureTerminal":null,
+      "arrivalTerminal":null,
+      "totalTime":{
+         "day":0,
+         "hour":0,
+         "minute":0
+      },
+      "connectingTime":35
+   }
+]
+
+"returnFlights":[],"srtReturnFlights":[],"roundTrips":[],"rtsRoundTrips":[]

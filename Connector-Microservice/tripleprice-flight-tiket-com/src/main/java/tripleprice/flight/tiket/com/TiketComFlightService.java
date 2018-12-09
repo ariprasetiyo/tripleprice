@@ -15,7 +15,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 
 import tripleprice.flight.enumuration.FlightClassType;
-import tripleprice.flight.enumuration.TripType;
 import tripleprice.flight.general.Baggage;
 import tripleprice.flight.general.FlightFacility;
 import tripleprice.flight.general.LoadDetails;
@@ -33,6 +32,7 @@ import tripleprice.flight.tiket.com.json.response.ItemsKeySearchResponse;
 import tripleprice.flight.tiket.com.json.response.Schedules;
 import tripleprice.flight.tiket.com.pojo.TiketComFlightParams;
 import tripleprice.service.PieceType;
+import tripleprice.util.DateUtil;
 
 /**
  * @author ari.prasetiyo
@@ -50,29 +50,36 @@ public class TiketComFlightService implements FlightService {
 	private static final SimpleDateFormat HH_MM = new SimpleDateFormat("HH:mm");
 	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 	private static final ObjectReader READER_TIKET_COM_SEARCH = OBJECT_MAPPER.readerFor(ItemsKeySearchResponse.class);
+	private static final DateUtil DATE_UTIL = DateUtil.getInstanceThreadSafe();
+	private static final String ORIGINAL_TYPE = "AIRPORT";
+	private static final String DESTINATION_TYPE = "CITY";
 	
 	@Override
 	public FlightItems flightSearchItem(final FlightParams flightParams) {
-		final TiketComFlightParams tiketComFlightParams = new TiketComFlightParams();
-		tiketComFlightParams.setOrigin("DPS");
-		tiketComFlightParams.setDestination("JKTC");
-		tiketComFlightParams.setDepatureDate("2018-12-11");
-		tiketComFlightParams.setAdult((byte) 1);
-		tiketComFlightParams.setChild((byte) 0);
-		tiketComFlightParams.setInfant((byte) 0);
-		tiketComFlightParams.setFlightClassType(FlightClassType.ECONOMY);
-		tiketComFlightParams.setOriginType("AIRPORT");
-		tiketComFlightParams.setDestionationType("CITY");
-		tiketComFlightParams.setTripType(TripType.ONE_WAY);
-		tiketComFlightParams.setResultType(ResultType.ALL);
-		tiketComFlightParams.setAsync(true);
-		final String responseJsonResult = tiketComConnector.getSearch(tiketComFlightParams);		
+		final String responseJsonResult = tiketComConnector.getSearch(flightSearchItemMapping(flightParams));
 		try {
 			return flightItemsMapping(READER_TIKET_COM_SEARCH.readValue(responseJsonResult));
 		} catch (IOException e) {
 			LOGGER.debug("Tiket.com error read json={}", e.getMessage(), e);
 		}
 		return null;
+	}
+	
+	private final TiketComFlightParams flightSearchItemMapping(final FlightParams flightParams) {
+		final TiketComFlightParams tiketComFlightParams = new TiketComFlightParams();
+		tiketComFlightParams.setOrigin(flightParams.getDepartureAirportCode());
+		tiketComFlightParams.setDestination(flightParams.getArrivalAirportCode());
+		tiketComFlightParams.setDepatureDate(DATE_UTIL.getDateYYYYMMDD(flightParams.getDepatureDate()));
+		tiketComFlightParams.setAdult(flightParams.getAdultsNum());
+		tiketComFlightParams.setChild(flightParams.getChildrenNum());
+		tiketComFlightParams.setInfant(flightParams.getInfantsNum());
+		tiketComFlightParams.setFlightClassType(flightParams.getFlightClassType());
+		tiketComFlightParams.setOriginType(ORIGINAL_TYPE);
+		tiketComFlightParams.setDestionationType(DESTINATION_TYPE);
+		tiketComFlightParams.setTripType(flightParams.getTripType());
+		tiketComFlightParams.setResultType(ResultType.ALL);
+		tiketComFlightParams.setAsync(true);
+		return tiketComFlightParams;
 	}
 
 	private final FlightItems flightItemsMapping(final ItemsKeySearchResponse tiketFlightSearch) {
@@ -150,12 +157,12 @@ public class TiketComFlightService implements FlightService {
 				LoadDetails loadDetails = new LoadDetails();
 				loadDetails.setWeight(segment.getBaggage().getCheckIn().getQuantity());
 				loadDetails
-						.setMeansurement(PieceType.valueOfString(segment.getBaggage().getCheckIn().getMeansurement()));
+						.setMeansurement(PieceType.valueOfString(segment.getBaggage().getCheckIn().getMeasurement()));
 				baggageRoute.setCheckIn(loadDetails);
 
 				loadDetails = new LoadDetails();
 				loadDetails.setWeight(segment.getBaggage().getCabin().getQuantity());
-				loadDetails.setMeansurement(PieceType.valueOfString(segment.getBaggage().getCabin().getMeansurement()));
+				loadDetails.setMeansurement(PieceType.valueOfString(segment.getBaggage().getCabin().getMeasurement()));
 				baggageRoute.setCabin(loadDetails);
 
 				flightFacilityRoute.setBaggage(baggageRoute);
@@ -168,9 +175,9 @@ public class TiketComFlightService implements FlightService {
 			}
 			flightSegment.setFlightRoutes(flightRoutes);
 
-			flightSegment.setDepartureAirportCode(outbound.getDepature().getAirportCode());
+			flightSegment.setDepartureAirportCode(outbound.getDeparture().getAirportCode());
 			flightSegment.setDepartureDate(
-					getTiketComDateTime(outbound.getDepature().getDate(), outbound.getDepature().getTime()));
+					getTiketComDateTime(outbound.getDeparture().getDate(), outbound.getDeparture().getTime()));
 			flightSegment.setArrivalAirportCode(outbound.getArrival().getAirportCode());
 			flightSegment.setArrivalDate(
 					getTiketComDateTime(outbound.getArrival().getDate(), outbound.getArrival().getTime()));

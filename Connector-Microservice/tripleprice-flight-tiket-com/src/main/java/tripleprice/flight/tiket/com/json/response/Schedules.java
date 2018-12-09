@@ -22,7 +22,7 @@ public class Schedules {
 	private TiketComTime travelTime;
 	private TiketComTime transitTime;
 	private Baggage baggage;
-	private String[] connectings;
+	private Connectings[] connectings;
 	private Facilities facilities;
 	private AirlineData operatingAirline;
 	private String operatingFlightNumber;
@@ -125,11 +125,11 @@ public class Schedules {
 		this.baggage = baggage;
 	}
 
-	public String[] getConnectings() {
+	public Connectings[] getConnectings() {
 		return connectings;
 	}
 
-	public void setConnectings(final String[] connectings) {
+	public void setConnectings(final Connectings[] connectings) {
 		this.connectings = connectings;
 	}
 

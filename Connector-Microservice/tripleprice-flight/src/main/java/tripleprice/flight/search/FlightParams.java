@@ -3,6 +3,7 @@ package tripleprice.flight.search;
 import java.util.Date;
 
 import tripleprice.flight.enumuration.FlightClassType;
+import tripleprice.flight.enumuration.TripType;
 
 /**
  * 
@@ -21,7 +22,16 @@ public class FlightParams {
 	private String arrivalAirportCode;
 	private short arrivalAirportId;
 	private FlightClassType flightClassType;
+	private TripType tripType;
 	private String currency;
+
+	public TripType getTripType() {
+		return tripType;
+	}
+
+	public void setTripType(TripType tripType) {
+		this.tripType = tripType;
+	}
 
 	public final String getCurrency() {
 		return currency;

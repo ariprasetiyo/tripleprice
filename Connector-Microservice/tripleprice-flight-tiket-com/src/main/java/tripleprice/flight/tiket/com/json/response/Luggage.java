@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, isGetterVisibility = NONE, setterVisibility = NONE)
 public class Luggage {
 	private short unit;
-	private String meansurement;
+	private String measurement;
 
 	@JsonProperty("qty")
 	private short quantity;
@@ -25,12 +25,12 @@ public class Luggage {
 		this.unit = unit;
 	}
 
-	public String getMeansurement() {
-		return meansurement;
+	public String getMeasurement() {
+		return measurement;
 	}
 
-	public void setMeansurement(final String meansurement) {
-		this.meansurement = meansurement;
+	public void setMeasurement(final String measurement) {
+		this.measurement = measurement;
 	}
 
 	public short getQuantity() {

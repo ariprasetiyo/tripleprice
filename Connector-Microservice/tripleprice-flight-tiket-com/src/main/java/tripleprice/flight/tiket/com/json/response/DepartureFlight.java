@@ -14,7 +14,7 @@ public class DepartureFlight {
 	private String flightSelect;
 	private String currency;
 	private AirlineData marketingAirline;
-	private FlightInfo depature;
+	private FlightInfo departure;
 	private FlightInfo arrival;
 	private FareDetail fareDetail;
 	private short totalTravelTimeInMinutes;
@@ -33,7 +33,7 @@ public class DepartureFlight {
 	private boolean roundTrip;
 	private String cabinClass;
 	private boolean international;
-
+	
 	public String getFlightId() {
 		return flightId;
 	}
@@ -66,12 +66,12 @@ public class DepartureFlight {
 		this.marketingAirline = marketingAirline;
 	}
 
-	public FlightInfo getDepature() {
-		return depature;
+	public FlightInfo getDeparture() {
+		return departure;
 	}
 
-	public void setDepature(final FlightInfo depature) {
-		this.depature = depature;
+	public void setDeparture(final FlightInfo departure) {
+		this.departure = departure;
 	}
 
 	public FlightInfo getArrival() {

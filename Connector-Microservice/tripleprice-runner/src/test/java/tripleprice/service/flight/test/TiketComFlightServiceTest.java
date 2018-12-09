@@ -12,6 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import tripleprice.flight.enumuration.FlightClassType;
+import tripleprice.flight.enumuration.TripType;
 import tripleprice.flight.search.FlightItems;
 import tripleprice.flight.search.FlightParams;
 import tripleprice.flight.tiket.com.TiketComFlightService;
@@ -35,12 +37,14 @@ public class TiketComFlightServiceTest {
 
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
-		cal.set(Calendar.DATE, 30);
+		cal.set(Calendar.DATE, 11);
 
 		flightParams.setDepatureDate(cal.getTime());
-		flightParams.setDepartureAirportCode("CGK");
-		flightParams.setArrivalAirportCode("DPS");
+		flightParams.setDepartureAirportCode("DPS");
+		flightParams.setArrivalAirportCode("JKTC");
 		flightParams.setAdultsNum((byte) 1);
+		flightParams.setFlightClassType(FlightClassType.ECONOMY);
+		flightParams.setTripType(TripType.ONE_WAY);		
 		
 		FlightItems flightItems = tiketComFlightService.flightSearchItem(flightParams);
 		System.out.println("\n\n"+ flightItems.toString());

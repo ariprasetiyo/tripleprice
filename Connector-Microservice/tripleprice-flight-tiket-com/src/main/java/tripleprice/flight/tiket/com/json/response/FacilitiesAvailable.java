@@ -11,14 +11,24 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 // @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, isGetterVisibility = NONE, setterVisibility = NONE)
 public class FacilitiesAvailable {
-	private boolean available;
 
-	public boolean isAvailable() {
-		return available;
+	private String icon;
+	private boolean value;
+
+	public String getIcon() {
+		return icon;
 	}
 
-	public void setAvailable(boolean available) {
-		this.available = available;
+	public void setIcon(final String icon) {
+		this.icon = icon;
+	}
+
+	public boolean isValue() {
+		return value;
+	}
+
+	public void setValue(final boolean value) {
+		this.value = value;
 	}
 
 }
