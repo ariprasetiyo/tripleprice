@@ -1,0 +1,79 @@
+CREATE TABLE T_MST_AIRPORT ( ID SERIAL, AIRPORT_CODE VARCHAR(5) primary key, AIRPORT_NAME VARCHAR(100), CREATED_ON TIMESTAMP DEFAULT NOW(), 
+CREATED_BY INT, UPDATED_ON TIMESTAMP DEFAULT NOW(), UPDATED_BY INT, VERSION double precision );
+
+
+create table T_MST_AIRPORT ( id serial primary key, id_ident int, ident varchar(15),type varchar(15),name varchar(200),latitude_deg float,longitude_deg double precision, elevation_ft varchar(100),continent varchar(10),iso_country varchar(15),iso_region varchar(100),municipality varchar(100),scheduled_service varchar(100),gps_code varchar(100),iata_code varchar(10),local_code varchar(10),home_link varchar(255),wikipedia_link varchar(200),keywords varchar(300), CREATED_ON TIMESTAMP DEFAULT NOW(), 
+CREATED_BY INT, UPDATED_ON TIMESTAMP DEFAULT NOW(), UPDATED_BY INT, VERSION real);
+
+ copy t_mst_airport( id_ident , ident ,type ,name,latitude_deg,longitude_deg, elevation_ft ,continent ,iso_country ,iso_region ,municipality ,scheduled_service ,gps_code ,iata_code ,local_code ,home_link ,wikipedia_link ,keywords ) from '/home/ari-prasetiyo/postgresData/airports.csv' delimiter ',' csv header;
+
+
+
+==============================================================
+create table t_mapping_continent(id serial primary key, name varchar(255),alpha_2 varchar(20),alpha_3 varchar(20),country_code varchar(20),iso_3166_2 varchar(20),region varchar(20),sub_region varchar(255),intermediate_region varchar(255),region_code varchar(255),sub_region_code varchar(20),intermediate_region_code varchar(20));
+
+copy t_mapping_continent (name,alpha_2 ,alpha_3 ,country_code ,iso_3166_2 ,region ,sub_region ,intermediate_region ,region_code ,sub_region_code ,intermediate_region_code ) from '/home/ari-prasetiyo/postgresData/Continent_region_and_sub_region_as_well_countries' delimiter ',' csv header;
+
+==============================================================
+create table t_mapping_province(id serial primary key, id_country varchar(10),local_conde varchar(10), name_county varchar(255),type_county varchar(100) )
+
+copy t_mapping_province( id_country,local_conde, name_county,type_county )  from '/home/ari-prasetiyo/postgresData/Capital_and_Province_as_well_county_utf8.csv' delimiter ',' csv;
+
+==============================================================
+
+
+create table t_mapping_county(id serial primary key, id_country varchar(20),local_code varchar(10), name_county varchar(255),name_county_2 varchar(255), parent_county varchar(10), type_number varchar(10), type_county varchar(100),  registration_id varchar(100),  unknown varchar(255) , unknown_2 varchar(255),  unknown_3 varchar(255))
+
+copy t_mapping_county(id_country ,local_code , name_county ,name_county_2, parent_county, type_number, type_county, registration_id, unknown, unknown_2,unknown_3 ) from '/home/ari-prasetiyo/postgresData/2018_2_UNLOCODE_CodeListPart1_formated.csv' delimiter ';' csv;
+copy t_mapping_county(id_country ,local_code , name_county ,name_county_2, parent_county, type_number, type_county, registration_id, unknown, unknown_2,unknown_3 ) from '/home/ari-prasetiyo/postgresData/2018_2_UNLOCODE_CodeListPart2_formated.csv' delimiter ',' csv;
+copy t_mapping_county(id_country ,local_code , name_county ,name_county_2, parent_county, type_number, type_county, registration_id, unknown, unknown_2,unknown_3 ) from '/home/ari-prasetiyo/postgresData/2018_2_UNLOCODE_CodeListPart3_formated.csv' delimiter ',' csv;
+
+==============================================================
+create table t_mst_location (id serial primary key, 
+parent_id INT, 
+location_numeric_code varchar(10), 
+location_alpha_code varchar(10), 
+location_type varchar(100), 
+name_en varchar(300), 
+CREATED_ON TIMESTAMP DEFAULT NOW(), 
+CREATED_BY INT, 
+UPDATED_ON TIMESTAMP DEFAULT NOW(), 
+UPDATED_BY INT, 
+VERSION double precision );
+
+insert into t_mst_location(parent_id, location_numeric_code, location_alpha_code, location_type,name_en, CREATED_ON, CREATED_BY, UPDATED_ON, UPDATED_BY, VERSION ) values
+(0, 1, 'AS', 1, 'Asia', now(), 0 , now(), 0 , 0.1 ), 
+(0, 2, 'EU', 1, 'Europe', now(), 0 , now(), 0 , 0.1 ),
+(0, 3, 'OC', 1, 'Oceania', now(), 0 , now(), 0 , 0.1 ),
+(0, 4, 'AF', 1, 'Africa', now(), 0 , now(), 0 , 0.1 ),
+(0, 5, 'SA', 1, 'South America', now(), 0 , now(), 0 , 0.1 ),
+(0, 6, 'NA', 1, 'North America', now(), 0 , now(), 0 , 0.1 ) ;
+
+
+-- select id_country as parent_id from t_mapping_county
+select region from t_mapping_continent GROUP BY region;
+select sub_region from t_mapping_continent GROUP BY sub_region;
+select intermediate_region from t_mapping_continent GROUP BY intermediate_region;
+
+select * from t_mapping_continent ;
+select * from t_mapping_province;
+select * from t_mapping_county where ;
+
+-- "Australia and New Zealand"
+"Southern Europe"
+"Northern Africa"
+"Micronesia"
+"Polynesia"
+"Western Europe"
+"Central Asia"
+""
+"South-eastern Asia"
+"Melanesia"
+"Eastern Europe"
+"Western Asia"
+"Northern Europe"
+"Sub-Saharan Africa"
+"Latin America and the Caribbean"
+"Southern Asia"
+"Northern America"
+"Eastern Asia"

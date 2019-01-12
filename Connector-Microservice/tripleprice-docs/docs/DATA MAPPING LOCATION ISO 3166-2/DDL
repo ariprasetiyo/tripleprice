@@ -1,0 +1,46 @@
+create table t_mst_location (
+id integer not null default -10,
+parent_in integer not null default -10,
+location_numeric_code smallint(4),
+location_alpha_code varchar(4),
+location_type smallint(3),
+name varchar(255) not null,
+description varchar(255),
+created_on timestamp default CURRENT_TIMESTAMP,
+created_by integer default 0,
+updated_on timestamp DEFAULT 0 on update CURRENT_TIMESTAMP,
+updated_by integer default 0,
+version smallint, PRIMARY KEY (ID)
+)
+
+
+load data infile '/home/ari-prasetiyo/Downloads/2018_2_UNLOCODE_CodeListPart1.csv' into table t_mapping_county fields terminated by ',' ;
+load data infile '/home/ari-prasetiyo/Downloads/2018_2_UNLOCODE_CodeListPart2.csv' into table t_mapping_county fields terminated by ',' ;
+load data infile '/home/ari-prasetiyo/Downloads/2018_2_UNLOCODE_CodeListPart3.csv' into table t_mapping_county fields terminated by ',' ;
+load data infile '/home/ari-prasetiyo/Downloads/2018_2_Subdivision_Codes.csv' into table t_mapping_country fields terminated by ',' ;
+
+
+create table t_mapping_county ( 
+id integer AUTO_INCREMENT
+,id_country varchar(4) 
+,local_code varchar(4) 
+,name_original  varchar(255)    
+,name_standart   varchar(255) 
+,parent_county   varchar(30) 
+,type_number   varchar(30)   
+,type_county     varchar(255) 
+,registration_id varchar(255) 
+,unknown         varchar(255) 
+,unknown_2       varchar(255) 
+,unknown_3       varchar(255),
+primary key (id) 
+) charset=utf8
+
+create table t_mapping_country (
+id integer AUTO_INCREMENT,
+id_country varchar(4),
+id_county varchar(10),
+name varchar(255),
+county_type varchar(100),
+primary key(id)
+) charset=UTF8

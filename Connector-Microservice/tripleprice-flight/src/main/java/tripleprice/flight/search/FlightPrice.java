@@ -19,7 +19,7 @@ public class FlightPrice {
 	/**
 	 * Treatment be like label discount 
 	 */
-	private String bannerPromo;
+	private String[] bannerPromo;
 	private String urlPromo;
 	private double oneWayFare;
 	private double roundtripFares;
@@ -123,11 +123,11 @@ public class FlightPrice {
 		this.promo = promo;
 	}
 
-	public String getBannerPromo() {
+	public String[] getBannerPromo() {
 		return bannerPromo;
 	}
 
-	public void setBannerPromo(final String bannerPromo) {
+	public void setBannerPromo(final String[] bannerPromo) {
 		this.bannerPromo = bannerPromo;
 	}
 
