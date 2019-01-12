@@ -8,7 +8,9 @@ tripleprice-server/src
 *.log
 
 # BlueJ files
+*.DS_Store
 *.ctxt
+.idea
 
 # Log server.sh start
 *.out

@@ -18,13 +18,13 @@ public class Fares {
 	private Fare adultFare;
 	private Fare childFare;
 	private Fare infantFare;
-	private String discountLabels;
-	
+	private String[] discountLabels;
+
 	public Fare getAdultFare() {
 		return adultFare;
 	}
 
-	public void setAdultFare(Fare adultFare) {
+	public void setAdultFare(final Fare adultFare) {
 		this.adultFare = adultFare;
 	}
 
@@ -32,7 +32,7 @@ public class Fares {
 		return childFare;
 	}
 
-	public void setChildFare(Fare childFare) {
+	public void setChildFare(final Fare childFare) {
 		this.childFare = childFare;
 	}
 
@@ -40,15 +40,15 @@ public class Fares {
 		return infantFare;
 	}
 
-	public void setInfantFare(Fare infantFare) {
+	public void setInfantFare(final Fare infantFare) {
 		this.infantFare = infantFare;
 	}
 
-	public String getDiscountLabels() {
+	public String[] getDiscountLabels() {
 		return discountLabels;
 	}
 
-	public void setDiscountLabels(String discountLabels) {
+	public void setDiscountLabels(String[] discountLabels) {
 		this.discountLabels = discountLabels;
 	}
 

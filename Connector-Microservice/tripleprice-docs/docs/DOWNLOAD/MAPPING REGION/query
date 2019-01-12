@@ -1,0 +1,137 @@
+﻿-- select id_country as parent_id from t_mapping_county
+select region from t_mapping_continent GROUP BY region;
+select sub_region from t_mapping_continent GROUP BY sub_region;
+select intermediate_region from t_mapping_continent GROUP BY intermediate_region;
+
+select 1 as parent_id, country_code as location_numeric_code , alpha_2 as location_alpha_code from t_mapping_continent where region = 'Asia' order by region;
+select * from t_mapping_continent order by region;
+select * from t_mapping_province;
+select * from t_mapping_county ;
+select * from t_mapping_continent
+select * from t_mst_location;
+
+
+"009";"Oceania"
+"019";"Americas"
+"142";"Asia"
+"002";"Africa"
+"";""
+"150";"Europe"
+
+select region_code, max(region) from t_mapping_continent group by region_code desc
+
+select * from t_mapping_continent 
+
+-- update t_mst_location set location_numeric_code = '002' where location_alpha_code in ( 'AF') 
+
+SELECT MAX(ALPHA_2), MAX(REGION), MIN(REGION), 
+MAX(SUB_REGION), SUB_REGION_CODE FROM t_mapping_continent TMC GROUP BY SUB_REGION_CODE 
+
+SELECT * from t_mapping_continent WHERE REGION = 'Asia'
+SELECT * FROM T_MST_LOCATION
+
+-- Insert sub continent
+INSERT INTO T_MST_LOCATION (
+parent_id,location_numeric_code,location_alpha_code,
+location_type,name_en,created_on,created_by,
+updated_on,updated_by,version
+)
+SELECT 
+cast((SELECT MAX(ID) AS A FROM t_mst_location WHERE name_en = MAX(TMC.SUB_REGION)) as INTEGER) as parent_id, 
+-- (SELECT MAX(name_en) AS A FROM t_mst_location WHERE name_en = MAX(TMC.REGION)) as name_parent, 
+SUB_REGION_CODE as location_numeric_code ,
+MAX(ALPHA_2) AS LOCATION_ALPHA_CODE,
+2 AS LOCATION_TYPE,
+MAX(SUB_REGION) AS NAME_EN, NOW() AS CREATED_ON, 0 AS CREATED_BY, NOW() AS UPDATED_ON, 0 AS UPDATED_BY, 0.1 AS VERSION 
+FROM t_mapping_continent TMC 
+--GROUP BY SUB_REGION_CODE
+
+
+
+
+-- Insert countries
+INSERT INTO T_MST_LOCATION (
+parent_id,location_numeric_code,location_alpha_code,
+location_type,name_en,created_on,created_by,
+updated_on,updated_by,version
+)
+SELECT 
+cast((SELECT MAX(ID) AS A FROM t_mst_location WHERE name_en = MAX(TMC.REGION)) as INTEGER) as parent_id, 
+-- (SELECT MAX(name_en) AS A FROM t_mst_location WHERE name_en = MAX(TMC.REGION)) as name_parent, 
+SUB_REGION_CODE as location_numeric_code ,
+MAX(ALPHA_2) AS LOCATION_ALPHA_CODE,
+2 AS LOCATION_TYPE,
+MAX(SUB_REGION) AS NAME_EN, NOW() AS CREATED_ON, 0 AS CREATED_BY, NOW() AS UPDATED_ON, 0 AS UPDATED_BY, 0.1 AS VERSION 
+FROM t_mapping_continent TMC GROUP BY SUB_REGION_CODE
+
+INSERT INTO T_MST_LOCATION (
+parent_id,location_numeric_code,location_alpha_code,
+location_type,name_en,created_on,created_by,
+updated_on,updated_by,version)
+SELECT 
+cast((SELECT ID AS A FROM t_mst_location WHERE LOCATION_NUMERIC_CODE = TMC.SUB_REGION_CODE) as INTEGER) as parent_id, 
+COUNTRY_CODE, ALPHA_2, 3 AS LOCATION_TYPE,  NAME, 
+NOW() AS CREATED_ON, 0 AS CREATED_BY, NOW() AS UPDATED_ON, 0 AS UPDATED_BY, 0.1 AS VERSION 
+FROM t_mapping_continent TMC 
+WHERE SUB_REGION_CODE NOT IN (SELECT LOCATION_NUMERIC_CODE FROM T_MST_LOCATION WHERE LOCATION_TYPE = 1 )
+
+
+SELECT * FROM t_mapping_continent
+SELECT * FROM t_MST_LOCATION WHERE LOCATION_ALPHA_CODE IN (
+SELECT LOCATION_ALPHA_CODE FROM t_MST_LOCATION GROUP BY LOCATION_ALPHA_CODE HAVING COUNT(LOCATION_ALPHA_CODE) > 1 )
+AND LOCATION_TYPE NOT IN (1,2)
+ORDER BY LOCATION_ALPHA_CODE DESC 
+
+
+SELECT * FROM T_MST_LOCATION TML WHERE TML.LOCATION_TYPE = 3 
+
+SELECT * FROM (
+SELECT 
+cast((SELECT ID AS A FROM t_mst_location WHERE LOCATION_ALPHA_CODE = TMP.ID_COUNTRY AND LOCATION_TYPE = 3) as INTEGER) as parent_id,
+-1, LOCAL_CONDE, 3 AS LOCATION_TYPE,  NAME_COUNTY, 
+NOW() AS CREATED_ON, 0 AS CREATED_BY, NOW() AS UPDATED_ON, 0 AS UPDATED_BY, 0.1 AS VERSION 
+FROM T_MST_LOCATION TML INNER JOIN t_mapping_province TMP 
+ON TML.LOCATION_TYPE = 3 AND TML.LOCATION_ALPHA_CODE = TMP.ID_COUNTRY ) AS ASAS
+WHERE PARENT_ID = 129
+
+SELECT * FROM T_MST_LOCATION WHERE ID = 129
+
+SELECT * FROM t_mapping_county where id_country = 'ID'
+SELECT * FROM t_mapping_province where id_country = 'ID'
+
+SELECT 
+CASE TYPE_COUNTY
+	WHEN 'Emirate' THEN '0' 
+	ELSE '1'
+END AS 	a, *
+FROM t_mapping_province
+
+
+SELECT type_county   FROM t_mapping_province group by type_county order by type_county  
+
+SELECT * FROM (
+SELECT TRIM(UPPER(type_county)) AS TYPE_COUNTRY_2   FROM t_mapping_province group by type_county order by type_county  )
+AS A GROUP BY TYPE_COUNTRY_2 ORDER BY TYPE_COUNTRY_2 ASC
+
+
+SELECT  (select id from t_mst_location where location_numeric_code = TMC.REGION_CODE LIMIT 1) AS PARENT_ID, *
+FROM t_mapping_continent TMC
+
+
+
+-- "Australia and New Zealand"Southern Europe"
+"Northern Africa"
+"Micronesia"
+"Polynesia"
+"Western Europe"
+"Central Asia"
+"South-eastern Asia"
+"Melanesia"
+"Eastern Europe"
+"Western Asia"
+"Northern Europe"
+"Sub-Saharan Africa"
+"Latin America and the Caribbean"
+"Southern Asia"
+"Northern America"
+"Eastern Asia"

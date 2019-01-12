@@ -31,6 +31,7 @@ public class NusatripFlightServiceTest {
 
 	@Test
 	public void NusatripGetSearchTest() {
+		
 		final FlightParams flightParams = new FlightParams();
 
 		Calendar cal = Calendar.getInstance();

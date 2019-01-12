@@ -33,11 +33,12 @@ public class TiketComFlightServiceTest {
 
 	@Test
 	public void TiketComSearchTest() {
+		
 		final FlightParams flightParams = new FlightParams();
 
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
-		cal.set(Calendar.DATE, 11);
+		cal.set(Calendar.DATE, 15);
 
 		flightParams.setDepatureDate(cal.getTime());
 		flightParams.setDepartureAirportCode("DPS");

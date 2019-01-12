@@ -4,7 +4,7 @@ package tripleprice.flight.general;
  * @author ari.prasetiyo
  */
 public enum AircraftType {
-	Boeing(0), Airbus(1), Cessna(2);
+	Unknown(-2), Null(-1), Boeing(0), Airbus(1), Cessna(2);
 
 	int intValue;
 
@@ -21,14 +21,14 @@ public enum AircraftType {
 		case 2:
 			return Cessna;
 		default:
-			return null;
+			return Unknown;
 		}
 	}
 
 	public static AircraftType valueOfString(final String stringValue) {
 
 		if (stringValue == null)
-			return null;
+			return Null;
 
 		switch (stringValue.toLowerCase()) {
 		case "boeing":
@@ -38,7 +38,7 @@ public enum AircraftType {
 		case "cessna":
 			return Cessna;
 		default:
-			return null;
+			return Unknown;
 		}
 	}
 

@@ -119,7 +119,7 @@ public class TiketComFlightService implements FlightService {
 			final FlightPrice flightPrice = new FlightPrice();
 
 			final Fares[] fares = outbound.getFareDetail().getFares();
-			final Fares airlineFare = fares[fares.length];
+			final Fares airlineFare = fares[fares.length-1];
 
 			flightPrice.setCurrency(airlineFare.getCurrency());
 			flightPrice.setBannerPromo(airlineFare.getDiscountLabels());
